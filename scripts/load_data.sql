@@ -1,3 +1,6 @@
+CREATE or ALTER PROCEDURE bronze.load_bronze AS
+
+BEGIN
 TRUNCATE TABLE bronze.crm_cust_info;
 BULK INSERT bronze.crm_cust_info 
 FROM '/var/opt/mssql/data/cust_info.csv'
@@ -52,3 +55,4 @@ FIRSTROW = 2,
 FIELDTERMINATOR = ',',
 TABLOCK
 );
+END
