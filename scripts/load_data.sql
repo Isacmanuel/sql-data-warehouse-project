@@ -1,6 +1,10 @@
 CREATE or ALTER PROCEDURE bronze.load_bronze AS
 
 BEGIN
+
+PRINT '=========================================================================';
+PRINT 'Loading the bronze layer';
+PRINT '=========================================================================';
 TRUNCATE TABLE bronze.crm_cust_info;
 BULK INSERT bronze.crm_cust_info 
 FROM '/var/opt/mssql/data/cust_info.csv'
@@ -9,6 +13,9 @@ FIRSTROW = 2,
 FIELDTERMINATOR = ',',
 TABLOCK
 );
+
+PRINT 'Loading CRM tables';
+PRINT '-------------------------------------------------------------';
 
 TRUNCATE TABLE bronze.crm_prd_info;
 BULK INSERT bronze.crm_prd_info
@@ -27,6 +34,9 @@ FIRSTROW = 2,
 FIELDTERMINATOR = ',',
 TABLOCK
 );
+
+PRINT 'Loading ERP tables';
+PRINT '-------------------------------------------------------------';
 
 TRUNCATE TABLE bronze.erp_cust_az12;
 BULK INSERT bronze.erp_cust_az12
