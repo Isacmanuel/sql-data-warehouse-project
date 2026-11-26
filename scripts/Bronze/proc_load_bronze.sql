@@ -9,7 +9,7 @@ PRINT 'Loading the bronze layer';
 PRINT '=========================================================================';
 
 PRINT 'Loading CRM tables';
-PRINT '-------------------------------------------------------------';
+PRINT '--------------------------------------------------------------------------';
 
 SET @start_time = GETDATE();
 TRUNCATE TABLE bronze.crm_cust_info;
@@ -22,7 +22,7 @@ TABLOCK
 );
 SET @end_time = GETDATE();
 PRINT '>>Load duration: ' + CAST (DATEDIFF(second, @start_time,@end_time) AS NVARCHAR) + 'seconds';
-PRINT '------------------------------------------'
+PRINT '---------------------------------------------------------------------------'
 
 
 SET @start_time = GETDATE();
@@ -36,7 +36,7 @@ TABLOCK
 );
 SET @end_time = GETDATE();
 PRINT '>>Load duration: ' + CAST (DATEDIFF(second, @start_time,@end_time) AS NVARCHAR) + 'seconds';
-PRINT '------------------------------------------'
+PRINT '----------------------------------------------------------------------------'
 
 
 SET @start_time = GETDATE();
@@ -50,10 +50,10 @@ TABLOCK
 );
 SET @end_time = GETDATE();
 PRINT '>>Load duration: ' + CAST (DATEDIFF(second, @start_time,@end_time) AS NVARCHAR) + 'seconds';
-PRINT '------------------------------------------'
+PRINT '-----------------------------------------------------------------------------'
 
 PRINT 'Loading ERP tables';
-PRINT '-------------------------------------------------------------';
+PRINT '-----------------------------------------------------------------------------';
 
 SET @start_time = GETDATE();
 TRUNCATE TABLE bronze.erp_cust_az12;
@@ -66,7 +66,7 @@ TABLOCK
 );
 SET @end_time = GETDATE();
 PRINT '>>Load duration: ' + CAST (DATEDIFF(second, @start_time,@end_time) AS NVARCHAR) + 'seconds';
-PRINT '------------------------------------------'
+PRINT '-----------------------------------------------------------------------------'
 
 
 SET @start_time = GETDATE();
@@ -80,7 +80,7 @@ TABLOCK
 );
 SET @end_time = GETDATE();
 PRINT '>>Load duration: ' + CAST (DATEDIFF(second, @start_time,@end_time) AS NVARCHAR) + 'seconds';
-PRINT '------------------------------------------'
+PRINT '-------------------------------------------------------------------------------'
 
 
 SET @start_time = GETDATE();
@@ -94,22 +94,22 @@ TABLOCK
 );
 SET @end_time = GETDATE();
 PRINT '>>Load duration: ' + CAST (DATEDIFF(second, @start_time,@end_time) AS NVARCHAR) + 'seconds';
-PRINT '------------------------------------------';
+PRINT '------------------------------------------------------------------------------';
 
 
 SET @end_time_total = GETDATE();
 PRINT 'Loanding bronze layer is completed';
 PRINT '>>Load duration of the whole process: ' + CAST (DATEDIFF(second, @start_time_total,@end_time_total) AS NVARCHAR) + ' seconds';
-PRINT '------------------------------------------';
+PRINT '-------------------------------------------------------------------------------';
 
 END TRY
  BEGIN CATCH
-  PRINT'==========================================================';
+  PRINT'==============================================================================';
   PRINT'Error occured during loading bronze layer';
   PRINT'Error message '+ ERROR_MESSAGE();
   PRINT'Error message '+ CAST (ERROR_NUMBER() AS NVARCHAR);
   PRINT'Error message '+ CAST (ERROR_STATE() AS NVARCHAR);
-  PRINT'==========================================================';
+  PRINT'==============================================================================';
  END CATCH
 END
 
