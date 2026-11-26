@@ -1,21 +1,7 @@
-/*
-====================================================================
-DDL script: Create bronze tables
-====================================================================
-Script purpose:
-This script creates tables in the bronze schema, dropping existing 
-tables if they already exist.
-Run this script to redefine the DDL structure of bronze tables.
-====================================================================
-*/
-
-
 CREATE or ALTER PROCEDURE bronze.load_bronze AS
-
 DECLARE @start_time DATETIME,@end_time DATETIME, @start_time_total DATETIME,@end_time_total DATETIME;
 
 BEGIN
-
 BEGIN TRY
 SET @start_time_total = GETDATE();
 PRINT '=========================================================================';
